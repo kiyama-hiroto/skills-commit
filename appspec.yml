@@ -12,7 +12,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t 381491935073.dkr.ecr.us-east-1.amazonaws.comskills-ecr:$DATETIME .
+      - docker build -t 381491935073.dkr.ecr.us-east-1.amazonaws.com/skills-ecr:$DATETIME .
   post_build:
     commands:
       - echo Build completed on `date`
