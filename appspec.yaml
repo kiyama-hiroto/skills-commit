@@ -1,0 +1,26 @@
+# This is an appspec.yml template file for use with an Amazon ECS deployment in CodeDeploy.
+# The lines in this template that start with the hashtag are 
+#   comments that can be safely left in the file or 
+#   ignored.
+# For help completing this file, see the "AppSpec File Reference" in the  
+#   "CodeDeploy User Guide" at
+#   https://docs.aws.amazon.com/codedeploy/latest/userguide/app-spec-ref.html
+version: 0.0
+# In the Resources section, you must specify the following: the Amazon ECS service, task definition name, 
+# and the name and port of the load balancer to route traffic,
+# target version, and (optional) the current version of your AWS Lambda function. 
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:us-east-1:381491935073:task-definition/skills-td:1" # Specify the ARN of your task definition (arn:aws:ecs:region:account-id:task-definition/task-definition-family-name:task-definition-revision-number)
+        LoadBalancerInfo: 
+          ContainerName: "app" # Specify the name of your Amazon ECS application's container
+          ContainerPort: "80" # Specify the port for your container where traffic reroutes 
+# Optional properties
+        PlatformVersion: "LATEST" # Specify the version of your Amazon ECS Service
+        NetworkConfiguration:
+          AwsvpcConfiguration:
+            Subnets: ["subnet-0604a28a9d4f76cae","subnet-065dc63a1f4258324","subnet-0fbf511c37be22b49"] # Specify one or more comma-separated subnets in your Amazon ECS service
+            SecurityGroups: ["sg-07f73e24f96eb761a"] # Specify one or more comma-separated security groups in your Amazon ECS service
+            AssignPublicIp: "DISABLED" # Specify "ENABLED" or "DISABLED"  
