@@ -18,3 +18,9 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push 381491935073.dkr.ecr.us-east-1.amazonaws.com/skills-ecr:$DATETIME
+
+artifacts:
+  files:
+    - appspec.yaml
+  discard-paths: yes
+  
