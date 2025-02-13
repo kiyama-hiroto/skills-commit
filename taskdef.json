@@ -1,0 +1,24 @@
+{
+    "executionRoleArn": "arn:aws:iam::381491935073:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+        {
+            "name": "app",
+            "image": "<IMAGE1_NAME>",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "protocol": "tcp",
+                    "containerPort": 80
+                }
+            ]
+        }
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "networkMode": "awsvpc",
+    "cpu": "256",
+    "memory": "512",
+    "family": "skills-td"
+}
